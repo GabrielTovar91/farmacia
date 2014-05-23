@@ -5,7 +5,7 @@
 		<small id="no_existe" class="error" style="display:none"></small>
 		<!-- Aqui se arma el formulario correspondiente al ingreso del usuario al sistema -->
 
-		<form  name="formLogin" onsubmit="return validarForm()" action='<?php echo site_url().'/';?>log_users' method="post">
+		<form  name="formLogin" onsubmit="return validarForm()" action='log_users' method="post">
 		<!-- Cuadro de texto para indicar correo -->
 			<div class="row">
 				<div class="large-8 large-centered columns" >

@@ -32,17 +32,16 @@
           </div>
           <!-- Esta seccion puede mostrarse SOLO si se inicia sesion -->
           <?php
-          $enlace = site_url();
           if($this->session->userdata('id_usuario'))
             echo '
           <div class="large-6 medium-6 columns">
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <label> <span class="letraA">Bienvenido, '.$this->session->userdata('nombre').' - <a href="'.$enlace.'/cerrar_sesion">Cerrar sesión</a></span></label>
+                <label> <span class="letraA">Bienvenido, '.$this->session->userdata('nombre').' - <a href="cerrar_sesion">Cerrar sesión</a></span></label>
                 <label> <span class="letraC">Busqueda Rápida por Nombre de Medicamento</span></label>
               </div>
                <div class="large-8 medium-8 columns">
-                <input type="text" placeholder="Ingrese el nombre del medicamento a consultar" id="elem_head"/> 
+                <input type="text" placeholder="Nombre del medicamento a consultar" id="elem_head"/> 
               </div>
               <div class="large-4 medium-4 columns">
                 <a href="#" class="button [tiny small large]" id="elem_head">Buscar</a>
