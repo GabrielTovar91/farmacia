@@ -2,9 +2,19 @@
 	<div class="large-6 large-centered columns" >
 		<fieldset><legend> <span class="letraB">Inicio de Sesión en Sistema</span></legend>
 		<!-- Esta alerta se muestra si el usuario no existe en la Base de Datos -->
-		<small id="no_existe" class="error" style="display:none"></small>
+		<?php
+			if(isset($estado)&&$estado=='negado')
+			{
+				echo '<small id="no_existe" class="error">El usuario ingresado no existe o los datos son incorrectos</small>';
+			}else{
+				if(isset($estado)&&$estado=='nuevo'){
+					echo '<small id="no_existe" class="error" style="display:none">Usuario Registrado satisfactoriamente</small>';
+				}else{
+					echo '<small id="no_existe" class="error" style="display:none"></small>';
+				}
+			}
+		?>
 		<!-- Aqui se arma el formulario correspondiente al ingreso del usuario al sistema -->
-
 		<form  name="formLogin" onsubmit="return validarForm()" action='log_users' method="post">
 		<!-- Cuadro de texto para indicar correo -->
 			<div class="row">
@@ -33,7 +43,7 @@
 		<br>
 		<div class="row">
 			<div class="small-11 small-centered columns" >
-				<a href="#">¿Necesita registrarse?</a>
+				<a href="nuevo_usuario">¿Necesita registrarse?</a>
 			/
 				<a href="#">¿Ha olvidado su contraseña?</a>
 			</div>

@@ -37,7 +37,7 @@
           <div class="large-6 medium-6 columns">
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <label> <span class="letraA">Bienvenido, '.$this->session->userdata('nombre').' - <a href="cerrar_sesion">Cerrar sesión</a></span></label>
+                <label> <span class="letraA">Bienvenid@, '.$this->session->userdata('nombre').' - <a href="cerrar_sesion">Cerrar sesión</a></span></label>
                 <label> <span class="letraC">Busqueda Rápida por Nombre de Medicamento</span></label>
               </div>
                <div class="large-8 medium-8 columns">

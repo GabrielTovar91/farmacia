@@ -12,6 +12,16 @@ class Usuarios_model extends CI_Model {
 		return $query->row();
 	}
 
+	function registrar_usuario($nombre,$pass,$correo,$priv)
+	{
+		$data = array(
+			"nombre" => $nombre,
+			"password"	=>	$pass,
+			"email"	=>	$correo,
+			"privilegio" =>$priv
+		);
+		$this->db->insert('system_user',$data);
+	}
 }
 
 ?>

@@ -14,12 +14,14 @@ class Iniciar_carga extends CI_Controller {
 		if($this->session->userdata('id_usuario'))
 		{
 			$data['titulo'] = 'Menu Principal - Farmacia Pildora Roja';
+			$data['estado'] = 'espera';
 			$data['contenido_principal'] = $this->load->view('index_main',$data,true); //indicar la vista a cargar
 			$this->load->view('template/template',$data);
 		}
 		else
 		{
 			$data['titulo'] = 'Inicio de Sesión - Farmacia Pildora Roja';
+			$data['estado'] = 'espera';
 			$data['contenido_principal'] = $this->load->view('login_view',$data,true); //indicar la vista a cargar
 			$this->load->view('template/template',$data);
 		}
