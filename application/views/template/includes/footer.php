@@ -1,11 +1,24 @@
 			</div>
 			<div id="footer">
-				<div class="row">
-					<div class="large-12 small-centered columns">
-						<h3><span class="letraFooter">&copy Copyright 2014 G&G Co. Derechos reservados.</span></h3>
+				<div class="panel">
+					<div class="large-12 small-centered columns", background-color:blue>
+						<ul class="breadcrumbs">
+							<li class="unavailable"><a href="#">Copyright G&G 2014. All rights reserved </a></li>
+							<?php
+								if($this->session->userdata('id_usuario'))
+						            echo '
+						                <li>Bienvenid@, '.$this->session->userdata('nombre').' -
+						                 <a href="cerrar_sesion">Cerrar sesión</a></li>
+									';
+							?>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 	</body>
 </html>
+
+
+
+

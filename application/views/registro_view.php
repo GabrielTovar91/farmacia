@@ -1,6 +1,7 @@
 <div class="row" id="centrar_pantalla">
 	<div class="large-6 large-centered columns" >
-		<fieldset><legend> <span class="letraB">Registro de Nuevo Usuario</span></legend>
+		<fieldset style="border-width: 3px; border-radius: 2em">
+		<legend align="center"> <span class="letraB">Registro de Nuevo Usuario</span></legend>
 		<!-- Esta alerta se muestra si el usuario no existe en la Base de Datos -->
 		<?php
 			if(isset($estado)&&$estado=='repetido')
@@ -15,7 +16,7 @@
 			<!-- Cuadro de texto para indicar nombre -->
 				<div class="row">
 					<div class="large-8 large-centered columns" >
-						<h3> <span class="letraB">Nombre de Usuario:</span></h3>
+						<label><br>Nombre de Usuario: </label>
 						<input type="text" name="nameField" autocomplete="off" onfocus="ocultar_error_name()" placeholder="Su nombre aqui"/>
 						<small id="name_invalido" class="error" style="display:none"></small>
 					</div>
@@ -23,7 +24,7 @@
 			<!-- Cuadro de texto para indicar correo -->
 				<div class="row">
 					<div class="large-8 large-centered columns" >
-						<h3> <span class="letraB">Correo electrónico:</span></h3>
+						<label><br>Correo Electrónico: </label>
 						<input type="text" name="emailField" autocomplete="off" onfocus="ocultar_error_email()" placeholder="ejemplo@correo.com"/>
 						<small id="email_invalido" class="error" style="display:none"></small>
 					</div>
@@ -31,22 +32,22 @@
 				<!-- Cuadro de texto para indicar contraseña -->
 				<div class="row">
 					<div class="large-8 large-centered columns" >
-						<h3> <span class="letraB">Contraseña:</span></h3>
+						<label><br>Contraseña: </label>
 						<input type="password" name="passField" onfocus="ocultar_error_pass()" placeholder="********"/>
 						<small id="pass_invalido" class="error" style="display:none"></small>
 					</div>
 				</div>
 				<div class="row">
 					<div class="large-8 large-centered columns" >
-						<h3> <span class="letraB">Repetir Contraseña:</span></h3>
+						<label><br>Repetir contraseña: </label>
 						<input type="password" name="passFieldR" onfocus="ocultar_error_passr()" placeholder="********"/>
 						<small id="passr_invalido" class="error" style="display:none"></small>
 					</div>
 				</div>
 				<!-- Selector de prioridad -->
 				<div class="row">
-					<div class="large-8 large-centered columns" >
-						<h3> <span class="letraB">Nivel de Privilegio:</span></h3>
+					<div class="large-8 large-centered columns" align="center">
+					<label>Nivel de Privilegio: </label><br>
 					</div>
 					<div class="large-10 large-centered columns" >
 						<div class="large-4 columns" >

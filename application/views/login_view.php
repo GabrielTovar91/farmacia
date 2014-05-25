@@ -1,6 +1,7 @@
 <div class="row" id="centrar_pantalla">
 	<div class="large-6 large-centered columns" >
-		<fieldset><legend> <span class="letraB">Inicio de Sesión en Sistema</span></legend>
+		<fieldset style="border-width: 3px; border-radius: 2em">
+		<legend  align="center"><span class="letraB">Inicio de Sesión en Sistema</span></legend>
 		<!-- Esta alerta se muestra si el usuario no existe en la Base de Datos -->
 		<?php
 			if(isset($estado)&&$estado=='negado')
@@ -19,7 +20,7 @@
 		<!-- Cuadro de texto para indicar correo -->
 			<div class="row">
 				<div class="large-8 large-centered columns" >
-					<h3> <span class="letraB">Correo electrónico:</span></h3>
+					<label><br>Correo electrónico: </label>
 					<input type="text" name="emailField" autocomplete="off" onfocus="ocultar_error_email()" placeholder="ejemplo@correo.com"/>
 					<small id="email_invalido" class="error" style="display:none"></small>
 				</div>
@@ -27,7 +28,7 @@
 			<!-- Cuadro de texto para indicar contraseña -->
 			<div class="row">
 				<div class="large-8 large-centered columns" >
-					<h3> <span class="letraB">Contraseña:</span></h3>
+					<label><br>Contraseña: </label>
 					<input type="password" name="passField" onfocus="ocultar_error_pass()" placeholder="********"/>
 					<small id="pass_invalido" class="error" style="display:none"></small>
 				</div>
@@ -40,16 +41,12 @@
 			</div>
 			<!-- Enlaces para opciones de usuario -->
 		</form>
-		<br>
-		<div class="row">
-			<div class="small-11 small-centered columns" >
-				<a href="nuevo_usuario">¿Necesita registrarse?</a>
-			/
-				<a href="#">¿Ha olvidado su contraseña?</a>
-			</div>
-		</div>
-		<br>
 		</fieldset>
+		<HR  align="center">
+			<ul class="breadcrumbs" > 
+				<li><a href="nuevo_usuario">¿Necesitas Registrarte?</a></li>
+				<li><a href="#">¿Ha olvidado su contraseña?</a></li>
+			</ul>
 	</div>
 </div>
 
