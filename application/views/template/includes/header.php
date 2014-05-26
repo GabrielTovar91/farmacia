@@ -21,6 +21,16 @@
     <link rel="stylesheet" href="assets/css/foundation.css" />
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/estilos.css">
+
+    <!-- Archivos Jquery UI -->
+    <link rel="stylesheet" href="js/development-bundle/themes/ui-darkness/jquery-ui.css">
+    <link rel="stylesheet" href="js/css/ui-darkness/jquery-ui-1.10.4.custom.css">
+    <script src="js/jquery-1.11.1.js"></script>
+    <script src="js/development-bundle/ui/jquery.ui.datepicker.js"></script>
+    <script src="js/js/jquery-ui-1.10.4.custom.min.js"></script>
+    
+
+
   </head>
 
   <body>

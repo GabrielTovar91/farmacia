@@ -21,4 +21,8 @@ class Alta_controller extends CI_Controller {
 			$this->load->view('template/template',$data);
 		}
 	}
+
+	public function registrar_medicamento(){
+		
+	}
 }
