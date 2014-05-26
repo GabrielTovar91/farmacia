@@ -18,7 +18,13 @@ var compActs=0;
 	<div class="small-8 small-centered columns">
 		<fieldset style="border-width: 3px; border-radius: 2em">
 			<legend  align="center"><span class="letraB">Alta de Medicamentos</span></legend><br><br>
-			<form data-abide action="#" method="POST">
+			<?php
+				if(isset($estado)&&$estado=='existeMed')
+				{
+					echo '<small id="no_existe" class="error">El medicamento ya se encuentra registrado en su sistema</small>';
+				}
+			?>
+			<form data-abide action="alta_controller/registrar_medicamento" method="POST">
 				
 				<div align="center">
 					<div style="width: 90%" align="left">
@@ -54,13 +60,15 @@ var compActs=0;
 			
 				<div class="large-6 columns">
 					<label for="customDropdown1">Presentación:
-						<select id="customDropdown1" class="medium" required="" data-invalid="">
+						<select id="customDropdown1" class="medium" required data-invalid="" name="prese">
 							<option value="">Seleccione su presentación</option>
-							<option value="first">Comprimidos</option>
-							<option value="second">Capsulas blandas</option>
-							<option value="third">Jarabe</option>
-							<option value="fourth">Solución Inyectable</option>
-							<option value="fifth">Otro...</option>
+							<option value="Tabletas">Tabletas</option>
+							<option value="Píldoras">Píldoras</option>
+							<option value="Comprimidos">Comprimidos</option>
+							<option value="Capsulas blandas">Capsulas blandas</option>
+							<option value="Jarabe">Jarabe</option>
+							<option value="Solucion Inyectable">Solución Inyectable</option>
+							<option value="Otro">Otro...</option>
 						</select>
 					</label>
 				</div>
@@ -72,7 +80,7 @@ var compActs=0;
 
 				<div class="large-6 columns">
 					<label>Lote: </label>
-					<input type="text" required placeholder="Lote..." name="lote">
+					<input type="number" required placeholder="Lote..." name="lote">
 				</div>
 
 				<div class="large-6 columns">
@@ -95,11 +103,14 @@ var compActs=0;
 					<input type="number" required placeholder="Stock máximo..." name="stockmax">
 				</div>
 
-				<div align="center">
-					<div style="width: 50%" align="left">
-						<label>Precio Unitario: </label>
-						<input type="number" required placeholder="Precio..." name="precio">
-					</div>
+				<div class="large-6 columns">
+					<label>Cantidad a ingresar: </label>
+					<input type="number" required placeholder="Cantidad..." name="cant">
+				</div>
+
+				<div class="large-6 columns">
+					<label>Precio Unitario: </label>
+					<input type="number" required placeholder="Precio..." name="precio">
 				</div>
 		</fieldset>
 				<div align="center">

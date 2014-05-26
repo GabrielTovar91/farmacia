@@ -6,7 +6,6 @@ class Iniciar_carga extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('medicamentos_model');
 	}
 
 
