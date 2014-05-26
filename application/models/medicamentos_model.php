@@ -2,6 +2,18 @@
 
 class Medicamentos_model extends CI_Model {
 
+	function get_medicamento($nombre,$lab,$pres)
+	{
+		$indice = null;
+		$data = array(
+			'nombre_md' => $nombre,
+			'laboratorio_md' => $lab,
+			'presentacion_md' => $pres
+		);
+		$query = $this->db->get_where('medicamentos_base',$data);
+		return $query->row();
+	}
+
 	function get_indice($nombre,$lab,$pres)
 	{
 		$indice = null;
@@ -28,6 +40,15 @@ class Medicamentos_model extends CI_Model {
 		return $query->row();
 	}
 
+	function set_cant($indice,$cant)
+	{
+		$data = array(
+			"cantidad_md"	=>	$cant,
+		);
+		$this->db->where('indice_md', $indice);
+		$this->db->update('medicamentos_base',$data); 
+	}
+
 	function set_medicamento($nombre,$lab,$prese,$dosis,$cant,$stockmin,$stockmax)
 	{
 		$data = array(
@@ -42,13 +63,14 @@ class Medicamentos_model extends CI_Model {
 		$this->db->insert('medicamentos_base',$data);
 	}
 
-	function set_lote($indice,$lote,$felab,$fvenci)
+	function set_lote($indice,$lote,$felab,$fvenci,$cant)
 	{
 		$data = array(
 			"indice_lote_md" => $indice,
 			"numero_lote_md"	=>	$lote,
 			"fechae_lote_md"	=>	$felab,
-			"fechav_lote_md"	=>	$fvenci
+			"fechav_lote_md"	=>	$fvenci,
+			"cantidad_lote_md"	=>	$cant
 		);
 		$this->db->insert('lotes_md',$data);
 	}
@@ -62,12 +84,6 @@ class Medicamentos_model extends CI_Model {
 		);
 		$this->db->insert('principios_activos_md',$data);
 	}
-
-	function set_cant($indice,$cant)
-	{
-		
-	}
-
 }
 
 ?>

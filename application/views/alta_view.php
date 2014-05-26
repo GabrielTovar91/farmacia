@@ -19,12 +19,20 @@ var compActs=0;
 		<fieldset style="border-width: 3px; border-radius: 2em">
 			<legend  align="center"><span class="letraB">Alta de Medicamentos</span></legend><br><br>
 			<?php
-				if(isset($estado)&&$estado=='existeMed')
+				if(isset($estado)&&$estado=='existelote')
 				{
-					echo '<small id="no_existe" class="error">El medicamento ya se encuentra registrado en su sistema</small>';
+					echo '<small id="no_existe" class="error">El medicamento O lote ingresados ya se encuentran registrados en su sistema. Verifique los datos e intente de nuevo</small>';
 				}
 			?>
-			<form data-abide action="alta_controller/registrar_medicamento" method="POST">
+			<?php
+				if(isset($estado)&&$estado=='excedeMax'&&isset($restante))
+				{
+					echo '<small id="excedemaximo" class="error">La cantidad indicada excede el stock máximo del medicamento, solo pueden almacenarse ';
+					echo $restante;
+					echo ' más. Verifique los datos e intente de nuevo</small>';
+				}
+			?>
+			<form data-abide name="datosmed" action="alta_controller/registrar_medicamento" onsubmit="return comprobar()" method="POST">
 				
 				<div align="center">
 					<div style="width: 90%" align="left">
@@ -43,7 +51,7 @@ var compActs=0;
 
 					<div class="large-6 columns">
 						<label><br>MGRS: </label>
-						<input type="number" required placeholder="Miligramos" name="miligramos[]">
+						<input type="number" min="1" required placeholder="Miligramos" name="miligramos[]">
 					</div>
 				</div>
 				<!-- Fin de contenido dinámico -->
@@ -85,12 +93,12 @@ var compActs=0;
 
 				<div class="large-6 columns">
 					<label>Dosis: </label>
-					<input type="text" required placeholder="Dosis..." name="dosis">
+					<input type="text" min="1" required placeholder="Dosis..." name="dosis">
 				</div>
 
 				<div class="large-6 columns">
 					<label>Lote: </label>
-					<input type="number" required placeholder="Lote..." name="lote">
+					<input type="number" min="1" required placeholder="Lote..." name="lote">
 				</div>
 
 				<div class="large-6 columns">
@@ -105,22 +113,23 @@ var compActs=0;
 
 				<div class="large-6 columns">
 					<label>Stock mínimo: </label>
-					<input type="number" required placeholder="Stock mínimo..." name="stockmin">
+					<input type="number" min="1" required placeholder="Stock mínimo..." name="stockmin">
 				</div>
 
 				<div class="large-6 columns">
 					<label>Stock máximo: </label>
-					<input type="number" required placeholder="Stock máximo..." name="stockmax">
+					<input id ="stmx" type="number" min="1" required placeholder="Stock máximo..." name="stockmax">
 				</div>
 
 				<div class="large-6 columns">
 					<label>Cantidad a ingresar: </label>
-					<input type="number" required placeholder="Cantidad..." name="cant">
+					<input id="cnt" type="number" onclick="ocultar_error_mayor()" min="1" required placeholder="Cantidad..." name="cant">
+					<small id="mayor" class="error" style="display:none"></small>
 				</div>
 
 				<div class="large-6 columns">
 					<label>Precio Unitario: </label>
-					<input type="number" required placeholder="Precio..." name="precio">
+					<input type="number" min="1" required placeholder="Precio..." name="precio">
 				</div>
 		</fieldset>
 				<div align="center">
@@ -189,4 +198,23 @@ function es_otro(idobjeto)
   	}
 }
 
+function ocultar_error_mayor()
+	{
+		document.getElementById("mayor").style.display="none";
+		document.getElementById("mayor").innerHTML="";
+	}
+
+function comprobar()
+{
+	var cantidad = document.forms["datosmed"]["cnt"].value;
+	var stockmax = document.forms["datosmed"]["stmx"].value;
+	if(cantidad > stockmax)
+	{
+		document.getElementById("mayor").style.display="block";
+		document.getElementById("mayor").innerHTML="La cantidad no debe superar el stock máximo";
+		return false;
+	}else{
+		return true;
+	}
+}
 </script>
