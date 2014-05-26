@@ -59,8 +59,8 @@ var compActs=0;
 				</div>
 			
 				<div class="large-6 columns">
-					<label for="customDropdown1">Presentación:
-						<select id="customDropdown1" class="medium" required data-invalid="" name="prese">
+					<label for="selectpresen">Presentación:
+						<select onchange="es_otro('selectpresen');" id="selectpresen" class="medium" required data-invalid="" name="prese">
 							<option value="">Seleccione su presentación</option>
 							<option value="Tabletas">Tabletas</option>
 							<option value="Píldoras">Píldoras</option>
@@ -71,6 +71,16 @@ var compActs=0;
 							<option value="Otro">Otro...</option>
 						</select>
 					</label>
+				</div>
+
+				<div id="otrapres" style="display:none">
+					<div class="large-6 columns">
+						<label>Indique la presentación del medicamento: </label><br><br>
+					</div>
+
+					<div class="large-6 columns">
+						<input type="text" id="presocul" placeholder="Presentación" name="presotro">
+					</div>
 				</div>
 
 				<div class="large-6 columns">
@@ -156,4 +166,27 @@ function remover_principio(divName)
 		compActs--;
 	}
 }
+
+function es_otro(idobjeto)
+{
+	var seleccion = document.getElementById(idobjeto);
+	if(seleccion && seleccion.tagName=="SELECT")
+	{
+		if (seleccion.options[seleccion.selectedIndex].value == "Otro" || seleccion.options[seleccion.selectedIndex].value == "Otro...")
+  		{
+  			document.getElementById("otrapres").style.display="inline";
+  			document.getElementById("presocul").required=true;
+  			document.getElementById("selectpresen").setAttribute("name","presotro");
+  			document.getElementById("presocul").setAttribute("name","prese");
+  		}else
+  		{
+  			document.getElementById("otrapres").style.display="none";
+  			document.getElementById("presocul").required=false;
+  			document.getElementById("presocul").value="";
+  			document.getElementById("selectpresen").setAttribute("name","prese");
+  			document.getElementById("presocul").setAttribute("name","presotro");
+  		}
+  	}
+}
+
 </script>

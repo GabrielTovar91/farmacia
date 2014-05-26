@@ -61,6 +61,7 @@ class Alta_controller extends CI_Controller {
 					if ($existelote==null)
 					{
 						$this->medicamentos_model->set_lote($indice,$_POST['lote'],$_POST['felab'],$_POST['fvenci']);
+						$this->medicamentos_model->set_cant($indice,$_POST['cant']);
 						$data['titulo'] = 'Menu Principal - Farmacia Pildora Roja';
 						$data['estado'] = 'ingreso';
 						$data['contenido_principal'] = $this->load->view('index_main',$data,true); //indicar la vista a cargar

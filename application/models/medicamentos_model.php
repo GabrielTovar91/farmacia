@@ -62,6 +62,12 @@ class Medicamentos_model extends CI_Model {
 		);
 		$this->db->insert('principios_activos_md',$data);
 	}
+
+	function set_cant($indice,$cant)
+	{
+		
+	}
+
 }
 
 ?>
