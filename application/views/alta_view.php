@@ -21,7 +21,7 @@ var compActs=0;
 			<?php
 				if(isset($estado)&&$estado=='existelote')
 				{
-					echo '<small id="no_existe" class="error">El medicamento O lote ingresados ya se encuentran registrados en su sistema. Verifique los datos e intente de nuevo</small>';
+					echo '<small id="no_existe" class="error">El medicamento/lote ingresado ya se encuentra registrado en su sistema. Verifique los datos e intente de nuevo</small>';
 				}
 			?>
 			<?php
@@ -92,8 +92,8 @@ var compActs=0;
 				</div>
 
 				<div class="large-6 columns">
-					<label>Dosis: </label>
-					<input type="text" min="1" required placeholder="Dosis..." name="dosis">
+					<label>Posología: </label>
+					<input type="text" min="1" required placeholder="Posología..." name="dosis">
 				</div>
 
 				<div class="large-6 columns">
@@ -125,6 +125,11 @@ var compActs=0;
 					<label>Cantidad a ingresar: </label>
 					<input id="cnt" type="number" onclick="ocultar_error_mayor()" min="1" required placeholder="Cantidad..." name="cant">
 					<small id="mayor" class="error" style="display:none"></small>
+				</div>
+
+				<div class="large-6 columns">
+					<label>Dosis por presentación: </label>
+					<input type="number" min="1" required placeholder="Dosis por presentación..." name="unidades">
 				</div>
 
 				<div class="large-6 columns">

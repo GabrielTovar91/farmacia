@@ -69,8 +69,8 @@
                 <ul class="left">
                   <li><a href="alta_controller">Alta de Medicamentos</a></li>
                   <li><a href="baja_controller">Baja de Medicamentos</a></li>
-                  <li><a href="#">Traspaso de Bienes</a></li>
-                  <li><a href="#">Consultar Medicamento</a></li>
+                  <li><a href="traspaso_controller">Traspaso de Bienes</a></li>
+                  <li><a href="#">Modificar datos de Medicamento</a></li>
                   <li><a href="#">Reportes</a></li>
                 </ul>
               </section>

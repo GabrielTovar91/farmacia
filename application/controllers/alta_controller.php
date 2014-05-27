@@ -43,7 +43,7 @@ class Alta_controller extends CI_Controller {
 				$indice = $this->obtener_indice($_POST['nombre'],$_POST['lab'],$_POST['prese']);
 				if($indice==null)//Si el medicamento no se encuentra registrado, lo registra
 				{
-					$this->medicamentos_model->set_medicamento($_POST['nombre'],$_POST['lab'],$_POST['prese'],$_POST['dosis'],$_POST['cant'],$_POST['stockmin'],$_POST['stockmax']);
+					$this->medicamentos_model->set_medicamento($_POST['nombre'],$_POST['lab'],$_POST['prese'],$_POST['dosis'],$_POST['cant'],$_POST['stockmin'],$_POST['stockmax'],$_POST['unidades']);
 					$indice = $this->obtener_indice($_POST['nombre'],$_POST['lab'],$_POST['prese']);
 					$this->medicamentos_model->set_lote($indice,$_POST['lote'],$_POST['felab'],$_POST['fvenci'],$_POST['cant']);
 					$nombrep = $_POST["descripcion"];
