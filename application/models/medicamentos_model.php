@@ -2,6 +2,15 @@
 
 class Medicamentos_model extends CI_Model {
 
+	function get_medicamento_porIndice($indice)
+	{
+		$data = array(
+			'indice_md' => $indice
+		);
+		$query = $this->db->get_where('medicamentos_base',$data);
+		return $query->row();
+	}
+
 	function get_medicamento($nombre,$lab,$pres)
 	{
 		$data = array(
@@ -166,7 +175,8 @@ class Medicamentos_model extends CI_Model {
 					);
 					$this->db->where('indice_md', $indice);
 					$this->db->update('medicamentos_base',$data);
-				}
+					return true;
+				}else return false;
 			}
 		}else{
 			foreach ($fila->result() as $row)
@@ -178,7 +188,8 @@ class Medicamentos_model extends CI_Model {
 					);
 					$this->db->where('indice_md', $indice);
 					$this->db->update('medicamentos_base',$data);
-				}
+					return true;
+				}else return false;
 			}
 		}
 	}

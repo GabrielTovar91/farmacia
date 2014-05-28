@@ -63,7 +63,9 @@
 				if(isset($existe)&&$existe=='si'){
 					echo '
 					<fieldset style="border-width: 3px; border-radius: 2em">
-						<legend  align="center">Descripción de la baja</legend><br><br>
+						<legend  align="center">Descripción de la baja</legend><br><br>';
+						if (isset($estado) && $estado=='incorrecto') echo '<small id="no_existe" class="error">La cantidad ingresada excede la maxima del inventario seleccionado, intentelo de nuevo</small>';
+						echo '
 						<form data-abide action="baja_controller/procesar_baja" method="POST">
 						<input type="text" name="index_med" style="display:none" value="'.$medid.'">
 						<div class="large-12 columns" align="center">
@@ -92,11 +94,11 @@
 						</div>
 	  					<div class="large-8 columns" align="left">
 	  						<label>Cantidad: </label>
-							<input type="number" required placeholder="Cantidad..." name="cantidad">
+							<input type="number" min = "0" id="cantidades" required placeholder="Cantidad..." name="cantidad" value="0">
 	  					</div>
 	  					<div class="large-12 columns">
 							<label>Descripción: 
-								<textarea required placeholder="Especifique..."></textarea>
+								<textarea required placeholder="Especifique..." name="excusa"></textarea>
 							</label>
 						</div>
 					</fieldset>

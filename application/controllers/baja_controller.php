@@ -72,11 +72,26 @@ class Baja_controller extends CI_Controller {
 		}else{
 			if(!$_POST==null)
 			{
-				$this->medicamentos_model->set_baja($_POST['index_med'],$_POST['invAfec'],$_POST['cantidad']);
-				$data['titulo'] = 'Menu Principal - Farmacia Pildora Roja';
-				$data['estado'] = 'bajaproc';
-				$data['contenido_principal'] = $this->load->view('index_main',$data,true); //indicar la vista a cargar
-				$this->load->view('template/template',$data);
+				$efectuada = $this->medicamentos_model->set_baja($_POST['index_med'],$_POST['invAfec'],$_POST['cantidad']);
+				if($efectuada){
+					$data['titulo'] = 'Menu Principal - Farmacia Pildora Roja';
+					$data['estado'] = 'bajaproc';
+					$data['contenido_principal'] = $this->load->view('index_main',$data,true); //indicar la vista a cargar
+					$this->load->view('template/template',$data);
+				}else{
+					$consulta = $this->medicamentos_model->get_medicamento_porIndice($_POST['index_med']);
+					$data['titulo'] = 'Baja de Medicamentos - Farmacia Pildora Roja';
+					$data['estado'] = 'incorrecto';
+					$data['existe'] = 'si';
+					$data['medid'] = $consulta->indice_md;
+					$data['nom'] = $consulta->nombre_md;
+					$data['pres'] = $consulta->presentacion_md;
+					$data['lab'] = $consulta->laboratorio_md;
+					$data['ctg'] = $consulta->cantidad_md;
+					$data['ctu'] = $consulta->en_unidosis;
+					$data['contenido_principal'] = $this->load->view('baja_view',$data,true); //indicar la vista a cargar
+					$this->load->view('template/template',$data);
+				}
 			}else{
 				$data['titulo'] = 'Baja de Medicamentos - Farmacia Pildora Roja';
 				$data['estado'] = 'espera';
