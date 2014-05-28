@@ -148,6 +148,40 @@ class Medicamentos_model extends CI_Model {
 			}
 		}
 	}
+
+	function set_baja($indice,$inv,$cant)
+	{
+		$data = array(
+			"indice_md" => $indice
+		);
+		$fila = $this->db->get_where('medicamentos_base',$data);
+		if ($inv=='gnr')
+		{
+			foreach ($fila->result() as $row)
+			{
+				if($row->cantidad_md >= $cant)
+				{
+					$data = array(
+						"cantidad_md" => $row->cantidad_md - $cant
+					);
+					$this->db->where('indice_md', $indice);
+					$this->db->update('medicamentos_base',$data);
+				}
+			}
+		}else{
+			foreach ($fila->result() as $row)
+			{
+				if($row->en_unidosis >= $cant)
+				{
+					$data = array(
+						"en_unidosis" => $row->en_unidosis - $cant
+					);
+					$this->db->where('indice_md', $indice);
+					$this->db->update('medicamentos_base',$data);
+				}
+			}
+		}
+	}
 }
 
 ?>
