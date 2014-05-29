@@ -45,9 +45,10 @@ class Traspaso_controller extends CI_Controller {
 					else if($tipos[$i]==2) $this->medicamentos_model->trasp_gtv($indices[$i],$cantidad[$i]);
 					else if($tipos[$i]==3) $this->medicamentos_model->trasp_utv($indices[$i],$cantidad[$i]);
 				}
-				$data['titulo'] = 'Menu Principal - Farmacia Pildora Roja';
-				$data['estado'] = 'traspasados';
-				$data['contenido_principal'] = $this->load->view('index_main',$data,true); //indicar la vista a cargar
+				$data['titulo'] = 'Traspaso de Bienes - Farmacia Pildora Roja';
+				$data['estado'] = 'espera';
+				$data['medics'] = $this->medicamentos_model->get_all_medicamentos();
+				$data['contenido_principal'] = $this->load->view('traspaso_view1',$data,true);
 				$this->load->view('template/template',$data);
 			}else{
 				$data['titulo'] = 'Traspaso de Bienes - Farmacia Pildora Roja';

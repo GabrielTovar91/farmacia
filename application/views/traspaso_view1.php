@@ -44,7 +44,7 @@
 	</table>
 	<div align="center">
 		<button type="submit" class="radius round button">Procesar</button>
-		<a class ="radius round button" id="canbutton" href="iniciar_carga">Cancelar</a>	
+		<a class ="radius round button" id="canbutton" href="iniciar_carga">Volver</a>	
 	</div>
 	</fieldset>
 </form>

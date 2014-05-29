@@ -54,6 +54,15 @@ class Medicamentos_model extends CI_Model {
 		return $query->row();
 	}
 
+	function get_principios_medi($indice)
+	{
+		$data = array(
+			'indice_pa_md' => $indice
+		);
+		$query = $this->db->get_where('principios_activos_md',$data);
+		return $query;
+	}
+
 	function set_cant($indice,$cant)
 	{
 		$data = array(
@@ -63,7 +72,7 @@ class Medicamentos_model extends CI_Model {
 		$this->db->update('medicamentos_base',$data); 
 	}
 
-	function set_medicamento($nombre,$lab,$prese,$dosis,$cant,$stockmin,$stockmax,$unidades)
+	function set_medicamento($nombre,$lab,$prese,$dosis,$cant,$stockmin,$stockmax,$unidades,$precio)
 	{
 		$data = array(
 			"nombre_md" => $nombre,
@@ -73,7 +82,8 @@ class Medicamentos_model extends CI_Model {
 			"cantidad_md"	=>	$cant,
 			"lotemin_md"	=>	$stockmin,
 			"lotemax_md" => $stockmax,
-			"unidades_md" => $unidades
+			"unidades_md" => $unidades,
+			"precio_md" => $precio
 		);
 		$this->db->insert('medicamentos_base',$data);
 	}
@@ -88,6 +98,32 @@ class Medicamentos_model extends CI_Model {
 			"cantidad_lote_md"	=>	$cant
 		);
 		$this->db->insert('lotes_md',$data);
+	}
+
+	function set_cant_lote($indice,$lote,$cant)
+	{
+		$datos = array(
+			'indice_lote_md' => $indice,
+			'numero_lote_md' => $lote
+		);
+		$data = array(
+			"cantidad_lote_md"	=>	$cant,
+		);
+		$this->db->where($datos);
+		$this->db->update('lotes_md',$data);
+	}
+
+	function update_stocks($index_med,$stockmin,$stockmax)
+	{
+		$datos = array(
+			'lotemin_md' => $stockmin,
+			'lotemax_md' => $stockmax
+		);
+		$data = array(
+			"indice_md"	=>	$index_med
+		);
+		$this->db->where($data);
+		$this->db->update('medicamentos_base',$datos);
 	}
 
 	function set_principios($indice,$nombrep,$milip)

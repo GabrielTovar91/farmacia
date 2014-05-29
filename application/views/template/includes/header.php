@@ -44,39 +44,23 @@
           <!--Esta seccion puede mostrarse SOLO si se inicia sesion-->
 
           <?php
-          if($this->session->userdata('id_usuario'))
+          if($this->session->userdata('id_usuario')){
             echo '
-              <div class="large-6 medium-6 columns">
-                <br><br>
-                <div class="row">
-                  <div class="large-8 medium-8 columns">
-                    <div class="row collapse">
-                      <div class="small-9 columns">
-                        <input type="text" placeholder="Buscar medicamento...">
-                      </div>
-                      <div class="small-3 columns">
-                        <a href="#" class="button postfix">&nbsp;&nbsp;&nbsp;Buscar&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
           <div class="large-12 columns">
             <nav class="top-bar" data-topbar>
               <section class="top-bar-section">
                 <!-- Left Nav Section -->
-                <ul class="left">
-                  <li><a href="alta_controller">Alta de Medicamentos</a></li>
-                  <li><a href="baja_controller">Baja de Medicamentos</a></li>
+                <ul class="left">';
+                  echo '<li><a href="consulta_controller">Consulta de Medicamento</a></li>';
+                  if ($this->session->userdata('privilegio')==0) echo'<li><a href="alta_controller">Alta de Medicamentos</a></li>';
+                  echo '<li><a href="baja_controller">Baja de Medicamentos</a></li>
                   <li><a href="traspaso_controller">Traspaso de Bienes</a></li>
-                  <li><a href="#">Modificar datos de Medicamento</a></li>
                   <li><a href="#">Reportes</a></li>
                 </ul>
               </section>
             </nav>
           </div>
-          ';
+          ';}
           ?>
           <!-- FIN DE SECCIÓN -->
         </div>

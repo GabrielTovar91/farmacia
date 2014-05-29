@@ -41,25 +41,6 @@ var compActs=0;
 						<small class="error">Se requiere un nombre.</small>
 					</div>
 				</div>
-				<div align="center"><br>Principio (s) Activo (s):<br></div>
-				<!-- Este contenido debe ser modificado dinámicamente -->
-				<div id="dinamic_principio">
-					<div class="large-6 columns">
-						<label><br>Descripción: </label>
-						<input type="text" required placeholder="Descripción" name="descripcion[]">
-					</div>
-
-					<div class="large-6 columns">
-						<label><br>MGRS: </label>
-						<input type="number" min="1" required placeholder="Miligramos" name="miligramos[]">
-					</div>
-				</div>
-				<!-- Fin de contenido dinámico -->
-				<div align="center">
-					<input type="button" class ="radius round button" value="Agregar otro" id="addprinc" onClick="agregar_principio('dinamic_principio');">
-					<input type="button" class ="radius round button" value="Eliminar último" id="subprinc" onClick="remover_principio('dinamic_principio');">
-				</div>
-				
 				<br>
 				<div class="large-6 columns">
 					<label>Laboratorio: </label>
@@ -91,14 +72,38 @@ var compActs=0;
 					</div>
 				</div>
 
+				<div class="large-12 columns" align="center">
+					<fieldset style="border-width: 3px; border-radius: 2em">
+						<legend  align="left">Principios Activos:</legend>
+						<!-- Este contenido debe ser modificado dinámicamente -->
+						<div id="dinamic_principio">
+							<div class="large-6 columns">
+								<label><br>Descripción: </label>
+								<input type="text" required placeholder="Descripción" name="descripcion[]">
+							</div>
+
+							<div class="large-6 columns">
+								<label><br>MGRS: </label>
+								<input type="text" pattern="[0-9]+" required placeholder="Miligramos" name="miligramos[]">
+							</div>
+						<!-- Fin de contenido dinámico -->
+						</div>
+						<div class="large-6 columns" align="center">
+							<input type="button" class ="small radius round button" value="Agregar otro" id="addprinc" onClick="agregar_principio('dinamic_principio');">
+						</div>
+						<div class="large-6 columns" align="center">
+							<input type="button" class ="small radius round button" value="Eliminar último" id="subprinc" onClick="remover_principio('dinamic_principio');">
+						</div>
+					</fieldset>
+
 				<div class="large-6 columns">
 					<label>Posología: </label>
-					<input type="text" min="1" required placeholder="Posología..." name="dosis">
+					<input type="text" required placeholder="Posología..." name="dosis">
 				</div>
 
 				<div class="large-6 columns">
 					<label>Lote: </label>
-					<input type="number" min="1" required placeholder="Lote..." name="lote">
+					<input type="text" required placeholder="Lote..." name="lote">
 				</div>
 
 				<div class="large-6 columns">
@@ -110,31 +115,36 @@ var compActs=0;
 					<label>F. Vencimiento: </label>
 					<input type="date" required placeholder="MM/DD/AAAA" name="fvenci" id="venci">
 				</div>
+				
+				<div class="large-12 columns">
+					<small id="mayorst" class="error" style="display:none"></small>
+				</div>
 
 				<div class="large-6 columns">
 					<label>Stock mínimo: </label>
-					<input type="number" min="1" required placeholder="Stock mínimo..." name="stockmin">
+					<input onclick="ocultar_error_stock()" id="stmn" type="text" pattern="[0-9]+" required placeholder="Stock mínimo..." name="stockmin">
 				</div>
 
 				<div class="large-6 columns">
 					<label>Stock máximo: </label>
-					<input id ="stmx" type="number" min="1" required placeholder="Stock máximo..." name="stockmax">
+					<input onclick="ocultar_error_stock()" id ="stmx" type="text" pattern="[0-9]+" required placeholder="Stock máximo..." name="stockmax">
 				</div>
 
 				<div class="large-6 columns">
 					<label>Cantidad a ingresar: </label>
-					<input id="cnt" type="number" onclick="ocultar_error_mayor()" min="1" required placeholder="Cantidad..." name="cant">
+					<input id="cnt" type="text" pattern="[0-9]+" onclick="ocultar_error_mayor()" required placeholder="Cantidad..." name="cant">
 					<small id="mayor" class="error" style="display:none"></small>
 				</div>
 
 				<div class="large-6 columns">
 					<label>Dosis por presentación: </label>
-					<input type="number" min="1" required placeholder="Dosis por presentación..." name="unidades">
+					<input type="text" pattern="[1-9]+" required placeholder="Dosis por presentación..." name="unidades">
 				</div>
-
-				<div class="large-6 columns">
+				<div class="large-6 columns" align="right">
 					<label>Precio Unitario: </label>
-					<input type="number" min="1" required placeholder="Precio..." name="precio">
+				</div>
+				<div class="large-6 columns">
+					<input type="text" pattern="[0-9]+[.]{1}[0-9]+" step="0.01" required placeholder="Precio..." name="precio">
 				</div>
 		</fieldset>
 				<div align="center">
@@ -203,6 +213,12 @@ function es_otro(idobjeto)
   	}
 }
 
+function ocultar_error_stock()
+	{
+		document.getElementById("mayorst").style.display="none";
+		document.getElementById("mayorst").innerHTML="";
+	}
+
 function ocultar_error_mayor()
 	{
 		document.getElementById("mayor").style.display="none";
@@ -211,15 +227,23 @@ function ocultar_error_mayor()
 
 function comprobar()
 {
-	var cantidad = document.forms["datosmed"]["cnt"].value;
-	var stockmax = document.forms["datosmed"]["stmx"].value;
+	var cantidad = parseInt(document.forms["datosmed"]["cnt"].value);
+	var stockmax = parseInt(document.forms["datosmed"]["stmx"].value);
 	if(cantidad > stockmax)
 	{
 		document.getElementById("mayor").style.display="block";
 		document.getElementById("mayor").innerHTML="La cantidad no debe superar el stock máximo";
 		return false;
 	}else{
-		return true;
+		var stockmin = parseInt(document.forms["datosmed"]["stmn"].value);
+		if(stockmin > stockmax)
+		{
+			document.getElementById("mayorst").style.display="block";
+			document.getElementById("mayorst").innerHTML="El stock máximo debe superar el stock mínimo";
+			return false;
+		}else{
+			return true;
+		}
 	}
 }
 </script>
