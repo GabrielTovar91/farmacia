@@ -38,7 +38,7 @@
       <div id="header">
         <div class="row">
           <div class="large-6 medium-6 columns">
-            <img src="img/logo_farmacia_web.png" align="left" id="img_head"/>
+            <a href="iniciar_carga"><img src="img/logo_farmacia_web.png" align="left" id="img_head"/></a>
           </div>
 
           <!--Esta seccion puede mostrarse SOLO si se inicia sesion-->
@@ -55,7 +55,7 @@
                   if ($this->session->userdata('privilegio')==0) echo'<li><a href="alta_controller">Alta de Medicamentos</a></li>';
                   echo '<li><a href="baja_controller">Baja de Medicamentos</a></li>
                   <li><a href="traspaso_controller">Traspaso de Bienes</a></li>
-                  <li><a href="#">Reportes</a></li>
+                  <li><a href="reportes_controller">Reportes</a></li>
                 </ul>
               </section>
             </nav>

@@ -6,6 +6,7 @@ class Iniciar_carga extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->model('medicamentos_model');
 	}
 
 
@@ -15,6 +16,7 @@ class Iniciar_carga extends CI_Controller {
 		{
 			$data['titulo'] = 'Menu Principal - Farmacia Pildora Roja';
 			$data['estado'] = 'espera';
+			$data['medlogin'] = $this->medicamentos_model->get_all_medicamentos();
 			$data['contenido_principal'] = $this->load->view('index_main',$data,true); //indicar la vista a cargar
 			$this->load->view('template/template',$data);
 		}

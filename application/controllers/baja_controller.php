@@ -76,6 +76,7 @@ class Baja_controller extends CI_Controller {
 				if($efectuada){
 					$data['titulo'] = 'Menu Principal - Farmacia Pildora Roja';
 					$data['estado'] = 'bajaproc';
+					$data['medlogin'] = $this->medicamentos_model->get_all_medicamentos();
 					$data['contenido_principal'] = $this->load->view('index_main',$data,true); //indicar la vista a cargar
 					$this->load->view('template/template',$data);
 				}else{

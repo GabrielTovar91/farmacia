@@ -36,7 +36,7 @@
 							echo'<option value="3">De unidosis a ventas</option>';
 					echo'</select>
 				</td>
-				<td><input type="number" min="0" required placeholder="Cantidad..." name="cantidad[]" value="0"></td>
+				<td><input type="text" pattern="[0-9]+" required placeholder="Cantidad..." name="cantidad[]" value="0"></td>
 			</tr>';
 			}
 			?>

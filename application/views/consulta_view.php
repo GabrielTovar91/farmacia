@@ -55,9 +55,13 @@
 							<br><label>Posologia:</label>
 							'.$pos.'
 						</div>
-						<div class="large-12 columns" align="left">
+						<div class="large-6 columns" align="left">
 							<br><label>Contiene:</label>
 							'.$pp.' unidades (Por presentación).
+						</div>
+						<div class="large-6 columns" align="left">
+							<br><label>Precio Unitario:</label>
+							'.$sell.' BsF.
 						</div>
 						';
 					}else{

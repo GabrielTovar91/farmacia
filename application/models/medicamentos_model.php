@@ -28,6 +28,18 @@ class Medicamentos_model extends CI_Model {
 		return $query;
 	}
 
+	function get_all_pa()
+	{
+		$query = $this->db->get('principios_activos_md');
+		return $query;
+	}
+
+	function get_all_lotes()
+	{
+		$query = $this->db->get('lotes_md');
+		return $query;
+	}
+
 	function get_indice($nombre,$lab,$pres)
 	{
 		$indice = null;

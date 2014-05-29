@@ -7,6 +7,7 @@ class Log_users extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('usuarios_model');
+		$this->load->model('medicamentos_model');
 	}
 
 	public function index()
@@ -22,6 +23,7 @@ class Log_users extends CI_Controller {
 					$this->session->set_userdata('privilegio', $datauser->privilegio);
 					$data['titulo'] = 'Menu Principal - Farmacia Pildora Roja';
 					$data['estado'] = 'ingreso';
+					$data['medlogin'] = $this->medicamentos_model->get_all_medicamentos();
 					$data['contenido_principal'] = $this->load->view('index_main',$data,true); //indicar la vista a cargar
 					$this->load->view('template/template',$data);
 				}else{
@@ -39,6 +41,7 @@ class Log_users extends CI_Controller {
 		}else{
 			$data['titulo'] = 'Menu Principal - Farmacia Pildora Roja';
 			$data['estado'] = 'ingreso';
+			$data['medlogin'] = $this->medicamentos_model->get_all_medicamentos();
 			$data['contenido_principal'] = $this->load->view('index_main',$data,true); //indicar la vista a cargar
 			$this->load->view('template/template',$data);
 		}

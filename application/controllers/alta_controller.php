@@ -54,6 +54,7 @@ class Alta_controller extends CI_Controller {
 					}
 					$data['titulo'] = 'Menu Principal - Farmacia Pildora Roja';
 					$data['estado'] = 'ingresomedic';
+					$data['medlogin'] = $this->medicamentos_model->get_all_medicamentos();
 					$data['contenido_principal'] = $this->load->view('index_main',$data,true); //indicar la vista a cargar
 					$this->load->view('template/template',$data);
 				}else{//Si esta registrado, verifica si el lote a ingresar se encuentra registrado
@@ -67,6 +68,7 @@ class Alta_controller extends CI_Controller {
 							$this->medicamentos_model->set_cant($indice,$_POST['cant'] + $consulta->cantidad_md);
 							$data['titulo'] = 'Menu Principal - Farmacia Pildora Roja';
 							$data['estado'] = 'ingresolote';
+							$data['medlogin'] = $this->medicamentos_model->get_all_medicamentos();
 							$data['contenido_principal'] = $this->load->view('index_main',$data,true); //indicar la vista a cargar
 							$this->load->view('template/template',$data);
 						}else{
@@ -84,6 +86,7 @@ class Alta_controller extends CI_Controller {
 							$this->medicamentos_model->set_cant($indice,$_POST['cant'] + $consulta->cantidad_md);
 							$data['titulo'] = 'Menu Principal - Farmacia Pildora Roja';
 							$data['estado'] = 'ingresolote';
+							$data['medlogin'] = $this->medicamentos_model->get_all_medicamentos();
 							$data['contenido_principal'] = $this->load->view('index_main',$data,true); //indicar la vista a cargar
 							$this->load->view('template/template',$data);
 						}else{

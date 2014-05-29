@@ -54,6 +54,7 @@ class Consulta_controller extends CI_Controller {
 					$data['pp'] = $consulta->unidades_md;
 					$data['smi'] = $consulta->lotemin_md;
 					$data['sma'] = $consulta->lotemax_md;
+					$data['sell'] = $consulta->precio_md;
 					$data['prin'] = $this->medicamentos_model->get_principios_medi($consulta->indice_md);
 					$data['contenido_principal'] = $this->load->view('consulta_view',$data,true); //indicar la vista a cargar
 					$this->load->view('template/template',$data);
@@ -91,6 +92,7 @@ class Consulta_controller extends CI_Controller {
 				$data['pp'] = $consulta->unidades_md;
 				$data['smi'] = $consulta->lotemin_md;
 				$data['sma'] = $consulta->lotemax_md;
+				$data['sell'] = $consulta->precio_md;
 				$data['prin'] = $this->medicamentos_model->get_principios_medi($consulta->indice_md);
 				$data['contenido_principal'] = $this->load->view('consulta_view',$data,true); //indicar la vista a cargar
 				$this->load->view('template/template',$data);

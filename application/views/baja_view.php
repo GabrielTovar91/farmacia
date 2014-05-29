@@ -94,7 +94,7 @@
 						</div>
 	  					<div class="large-8 columns" align="left">
 	  						<label>Cantidad: </label>
-							<input type="number" min = "0" id="cantidades" required placeholder="Cantidad..." name="cantidad" value="0">
+							<input type="text" pattern="[0-9]+" id="cantidades" required placeholder="Cantidad..." name="cantidad" value="0">
 	  					</div>
 	  					<div class="large-12 columns">
 							<label>Descripción: 
